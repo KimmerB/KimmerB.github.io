@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>작가 이름 — Portfolio</title>
+  <meta name="description" content="작가 소개와 작품 포트폴리오" />
+  <meta property="og:title" content="작가 이름 — Portfolio" />
+  <meta property="og:description" content="작가 소개와 작품 포트폴리오" />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="" />
+  <style>
+    :root {
+      --bg: #0b0c10;
+      --card: #101218;
+      --muted: #b9c2cf;
+      --text: #e8edf2;
+      --brand: #7dd3fc; /* sky-300 */
+      --brand-2: #22d3ee; /* cyan-400 */
+      --radius: 16px;
+      --shadow: 0 8px 24px rgba(0,0,0,.25);
+    }
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; background:var(--bg); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Noto Sans, Apple SD Gothic Neo, "Malgun Gothic", sans-serif; }
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+    .container { width: min(1100px, 92vw); margin: 0 auto; }
+    header { position: sticky; top:0; backdrop-filter: blur(8px); background: rgba(11,12,16,.6); border-bottom: 1px solid rgba(255,255,255,.06); z-index: 20; }
+    .nav { display:flex; align-items:center; justify-content:space-between; padding: 16px 0; }
+    .brand { font-weight: 700; letter-spacing:.2px; }
+    .brand b { background: linear-gradient(90deg,var(--brand),var(--brand-2)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    nav a { opacity:.85; margin-left:20px; font-size: 14px; }
+    nav a:hover { opacity:1; }
+
+    .hero { display:grid; grid-template-columns: 1.2fr .8fr; gap: 28px; padding: 48px 0 28px; align-items:center; }
+    .hero h1 { font-size: clamp(28px, 4vw, 42px); line-height: 1.1; margin: 0 0 12px; }
+    .muted { color: var(--muted); }
+    .pill { display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border:1px solid rgba(255,255,255,.08); border-radius:999px; background:rgba(255,255,255,.03); font-size:12px; }
+    .cta { display:inline-block; margin-top:18px; padding:12px 16px; border-radius: 10px; background: linear-gradient(135deg,var(--brand),var(--brand-2)); color:#001019; font-weight:600; box-shadow: var(--shadow); }
+
+    .section { padding: 36px 0 8px; }
+    .section h2 { font-size: 22px; margin: 0 0 14px; letter-spacing:.2px; }
+
+    .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    @media (max-width: 900px){ .hero { grid-template-columns: 1fr; } .grid { grid-template-columns: repeat(2, 1fr);} }
+    @media (max-width: 560px){ .grid { grid-template-columns: 1fr; } }
+
+    .card { background:var(--card); border:1px solid rgba(255,255,255,.06); border-radius: var(--radius); overflow:hidden; box-shadow: var(--shadow); transition: transform .2s ease; }
+    .card:hover { transform: translateY(-2px); }
+    .thumb { aspect-ratio: 4/3; object-fit: cover; }
+    .card-body { padding: 12px 14px 14px; }
+    .title { font-weight: 600; margin: 2px 0 4px; }
+    .meta { font-size: 12px; color: var(--muted); }
+
+    .prose { color: var(--muted); line-height: 1.7; }
+    .prose p { margin: 0 0 12px; }
+
+    .footer { padding: 36px 0 60px; color: var(--muted); font-size: 14px; border-top: 1px solid rgba(255,255,255,.06); margin-top: 36px; }
+
+    /* Lightbox */
+    .overlay { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: grid; place-items:center; padding: 24px; opacity:0; pointer-events:none; transition: opacity .15s ease; }
+    .overlay.open { opacity:1; pointer-events:auto; }
+    .overlay img { max-width: min(92vw, 1200px); max-height: 85vh; border-radius: 12px; box-shadow: var(--shadow); }
+    .overlay button { position:absolute; top:14px; right:14px; background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.2); color:#fff; padding:8px 10px; border-radius: 8px; }
+
+    .chip { display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.08); color:var(--muted); font-size:12px; margin-right:8px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">🖼️ <b>작가 이름</b></div>
+      <nav>
+        <a href="#works">작품</a>
+        <a href="#about">소개</a>
+        <a href="#statement">철학</a>
+        <a href="#contact">연락</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero">
+      <div>
+        <div class="pill">Portfolio · Updated <span id="updated">2025-09-30</span></div>
+        <h1>김규민을 사랑하는<br/>김지후 작가</h1>
+        <p class="prose">김지후를 사랑하는 김규민이 만들어봄 ㅎㅎ.</p>
+        <a href="#works" class="cta">대표작 보기</a>
+        <div style="margin-top:12px">
+          <span class="chip">#Painting</span>
+          <span class="chip">#MixedMedia</span>
+          <span class="chip">#Contemporary</span>
+        </div>
+      </div>
+      <div>
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1800&auto=format&fit=crop" alt="대표 작품" class="card thumb" style="border-radius: var(--radius); object-fit: cover; aspect-ratio: 4/3;" loading="lazy">
+      </div>
+    </section>
+
+    <!-- Works -->
+    <section id="works" class="section">
+      <h2>작품</h2>
+      <div id="work-grid" class="grid"></div>
+    </section>
+
+    <!-- About -->
+    <section id="about" class="section">
+      <h2>작가 소개</h2>
+      <div class="prose">
+        <p><strong>학력</strong>: 2021~2025 서울대학교 러블리학과 졸업 · 2025~2027 Parsons MFA</p>
+        <p><strong>개인전</strong>: 김규민을 사랑함 ㅎㅎ</p>
+        <p><strong>단체전</strong>: 김규민을 너무너무 사랑함</p>
+      </div>
+    </section>
+
+    <!-- Statement -->
+    <section id="statement" class="section">
+      <h2>작업 철학</h2>
+      <div class="prose">
+        <p>나는 생각한다... 고로 배고프다... 김규민을 사랑한다...</p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <h2>연락</h2>
+      <div class="prose">
+        <p>이메일: <a href="mailto:artist@example.com">hooizkim.naver.com</a> · 인스타그램: <a href="https://instagram.com/hoo_izkim" target="_blank" rel="noopener">@hoo_izkim</a></p>
+        <p>상업 라이선스/콜라보 문의는 이메일로 부탁드립니다.</p>
+      </div>
+    </section>
+  </main>
+
+  <div class="overlay" id="overlay">
+    <button aria-label="닫기" id="closeOverlay">닫기</button>
+    <img alt="확대 이미지" id="overlayImg" />
+  </div>
+
+  <footer class="footer container">© <span id="year"></span> 김지후 — All rights reserved.</footer>
+
+  <script>
+    // --------------- 작품 데이터만 수정하면 자동 반영 ---------------
+    const WORKS = [
+      {
+        title: "무제 #1",
+        year: "2025",
+        medium: "Oil on canvas",
+        size: "80×60 cm",
+        cover: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA0KbVdtjWBa9RhB--fFmqzpAfRuWCX2uPTA&s",
+        large: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA0KbVdtjWBa9RhB--fFmqzpAfRuWCX2uPTA&s",
+        note: "김규민"
+      },
+      {
+        title: "City Fragments",
+        year: "2025",
+        medium: "Acrylic on canvas",
+        size: "120×90 cm",
+        cover: "https://blog.kakaocdn.net/dna/bY3RjL/btsKusRPvod/AAAAAAAAAAAAAAAAAAAAAI7vtRTveC5LNn7pOO8g5pfWoRy757X2Wsz-dlQfX1Pb/img.jpg?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1759244399&allow_ip=&allow_referer=&signature=%2FAJf1rpz4UqN2nxKrk2iS1eQNuc%3D",
+        large: "https://blog.kakaocdn.net/dna/bY3RjL/btsKusRPvod/AAAAAAAAAAAAAAAAAAAAAI7vtRTveC5LNn7pOO8g5pfWoRy757X2Wsz-dlQfX1Pb/img.jpg?credential=yqXZFxpELC7KVnFOS48ylbz2pIh7yKj8&expires=1759244399&allow_ip=&allow_referer=&signature=%2FAJf1rpz4UqN2nxKrk2iS1eQNuc%3D",
+        note: "김지후"
+      },
+      {
+        title: "Lines of Quiet",
+        year: "2025",
+        medium: "Mixed media",
+        size: "100×70 cm",
+        cover: "https://blog.cosmonsoda.com/wp-content/uploads/2022/07/%EB%AC%B4%ED%86%A0w-1.jpg",
+        large: "https://blog.cosmonsoda.com/wp-content/uploads/2022/07/%EB%AC%B4%ED%86%A0w-1.jpg",
+        note: "김버블"
+      }
+    ];
+
+    // --------------- 렌더링 ---------------
+    const grid = document.getElementById('work-grid');
+    grid.innerHTML = WORKS.map((w,i)=>`
+      <article class="card">
+        <img class="thumb" src="${w.cover}" alt="${w.title}" loading="lazy" data-large="${w.large}"/>
+        <div class="card-body">
+          <div class="title">${w.title}</div>
+          <div class="meta">${w.year} · ${w.medium}${w.size?` · ${w.size}`:''}</div>
+          ${w.note?`<div class="prose" style="margin-top:6px">${w.note}</div>`:''}
+        </div>
+      </article>
+    `).join('');
+
+    // --------------- 라이트박스 ---------------
+    const overlay = document.getElementById('overlay');
+    const overlayImg = document.getElementById('overlayImg');
+    document.addEventListener('click', (e)=>{
+      const t = e.target;
+      if(t.matches('img[data-large]')) {
+        overlayImg.src = t.dataset.large || t.src;
+        overlay.classList.add('open');
+      }
+    });
+    document.getElementById('closeOverlay').onclick = ()=> overlay.classList.remove('open');
+    overlay.addEventListener('click', (e)=>{ if(e.target===overlay) overlay.classList.remove('open'); });
+
+    // --------------- 기타 ---------------
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
